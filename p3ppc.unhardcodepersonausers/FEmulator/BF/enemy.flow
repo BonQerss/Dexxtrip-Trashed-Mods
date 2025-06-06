@@ -1,0 +1,291 @@
+import("enemy.msg");
+
+// Procedure Index: 111
+void AI_HighPriestess_hook() {
+    int var36;
+    int var37;
+
+    if (AI_FUNCTION_000E(275) == 1) {
+        BIT_ON(5568);
+    } else if (AI_FUNCTION_000E(275) == 0) {
+        BIT_OFF(5568);
+    }
+
+    if (AI_FUNCTION_000E(276) == 1) {
+        BIT_ON(5569);
+    } else if (AI_FUNCTION_000E(276) == 0) {
+        BIT_OFF(5569);
+    }
+
+    if (AI_CHK_HP_PERCENT(75) == 1) {
+        BIT_ON(5570);
+    } else if (AI_CHK_HP_PERCENT(50) == 1) {
+        BIT_ON(5570);
+        BIT_ON(5571);
+    } else if (AI_CHK_HP_PERCENT(25) == 1) {
+        BIT_ON(5570);
+        BIT_ON(5571);
+        BIT_ON(5572);
+    }
+
+    if (AI_FUNCTION_0008(2) == 1) {
+        BIT_ON(5573);
+    } else if (AI_FUNCTION_0008(2) == 0) {
+        BIT_OFF(5573);
+    }
+
+    var36 = AI_RND(100);
+    var37 = AI_RND(100);
+
+    if (!BIT_CHK(5574)) {
+        BIT_ON(5574);
+        BIT_ON(5619);
+        AI_FUNCTION_009C(352, 275, 276, 0);
+        return;
+    }
+
+    if (BIT_CHK(5573)) {
+        if (var37 < 15) {
+            if (!BIT_CHK(5568) && !BIT_CHK(5569) && BIT_CHK(5571)) {
+                BIT_ON(5619);
+                AI_FUNCTION_009C(352, 275, 276, 0);
+                return;
+            } else if (!BIT_CHK(5568)) {
+                BIT_ON(5619);
+                AI_FUNCTION_009C(353, 275, 0, 0);
+                return;
+            } else if (!BIT_CHK(5569)) {
+                BIT_ON(5619);
+                AI_FUNCTION_009C(354, 276, 0, 0);
+                return;
+            }
+        }
+    }
+
+    if (!BIT_CHK(5572)) {
+        if (var36 < 10) {
+            AI_ACT_PERSONA(176, 77);
+            AI_ACT_SKILL(BattleSkill.Mabufu);
+            AI_TAR_RND();
+            return;
+        } else if (var36 < (10 + 30)) {
+            AI_ACT_PERSONA(176, 77);
+            AI_ACT_WEAPON();
+            AI_TAR_RND();
+            return;
+        } else if (var36 < ((10 + 30) + 10)) {
+            AI_ACT_PERSONA(176, 77);
+            AI_ACT_SKILL(BattleSkill.AssaultDive);
+            AI_TAR_RND();
+            return;
+        } else if (var36 < (((10 + 30) + 10) + 30)) {
+            AI_ACT_PERSONA(176, 77);
+            AI_ACT_SKILL(BattleSkill.Bufu);
+            AI_TAR_RND();
+            return;
+        } else {
+            AI_ACT_PERSONA(176, 77);
+            AI_ACT_SKILL(BattleSkill.Pulinpa);
+            AI_TAR_RND();
+            return;
+        }
+    } else if (BIT_CHK(5572)) {
+        if (var36 < 20) {
+            AI_ACT_SKILL(BattleSkill.Mabufu);
+            AI_ACT_PERSONA(176, 77);
+            AI_TAR_RND();
+            return;
+        } else if (var36 < (10 + 20)) {
+            AI_ACT_WEAPON();
+            AI_TAR_RND();
+            return;
+        } else if (var36 < ((10 + 30) + 20)) {
+            AI_ACT_SKILL(BattleSkill.AssaultDive);
+            AI_ACT_PERSONA(176, 77);
+            AI_TAR_RND();
+            return;
+        } else if (var36 < (((10 + 30) + 10) + 20)) {
+            AI_ACT_SKILL(BattleSkill.Bufu);
+            AI_ACT_PERSONA(176, 77);
+            AI_TAR_RND();
+            return;
+        } else if (var36 < ((((10 + 30) + 10) + 20) + 20)) {
+            AI_ACT_SKILL(BattleSkill.MarinKarin);
+            AI_ACT_PERSONA(176, 77);
+            AI_TAR_RND();
+            return;
+        } else {
+            AI_FUNCTION_0048();
+            AI_ACT_PERSONA(176, 77);
+            AI_MINE();
+            return;
+        }
+    } else {
+        AI_FUNCTION_0048();
+        AI_MINE();
+        return;
+    }
+
+    AI_FUNCTION_0042();
+}
+
+// Procedure Index: 235
+void AI_HighPriestess_R_hook() {
+    int var239;
+    int var240;
+
+    if (AI_FUNCTION_000E(211) == 1) {
+        BIT_ON(5568);
+    } else if (AI_FUNCTION_000E(211) == 0) {
+        BIT_OFF(5568);
+    }
+
+    if (AI_FUNCTION_000E(212) == 1) {
+        BIT_ON(5569);
+    } else if (AI_FUNCTION_000E(212) == 0) {
+        BIT_OFF(5569);
+    }
+
+    if (AI_CHK_HP_PERCENT(75) == 1) {
+        BIT_ON(5570);
+    } else if (AI_CHK_HP_PERCENT(50) == 1) {
+        BIT_ON(5570);
+        BIT_ON(5571);
+    } else if (AI_CHK_HP_PERCENT(25) == 1) {
+        BIT_ON(5570);
+        BIT_ON(5571);
+        BIT_ON(5572);
+    }
+
+    if (AI_FUNCTION_0008(2) == 1) {
+        BIT_ON(5573);
+    } else if (AI_FUNCTION_0008(2) == 0) {
+        BIT_OFF(5573);
+    }
+
+    var239 = AI_RND(100);
+    var240 = AI_RND(100);
+
+    if (!BIT_CHK(5574)) {
+        BIT_ON(5574);
+        BIT_ON(5619);
+        AI_FUNCTION_009C(352, 211, 212, 0);
+        BIT_ON(5630);
+        return;
+    }
+
+    if (BIT_CHK(5573)) {
+        if (var240 < 15) {
+            if (!BIT_CHK(5568) && !BIT_CHK(5569) && BIT_CHK(5571)) {
+                BIT_ON(5619);
+                AI_FUNCTION_009C(352, 211, 212, 0);
+                BIT_ON(5630);
+                return;
+            } else if (!BIT_CHK(5568)) {
+                BIT_ON(5619);
+                AI_FUNCTION_009C(353, 211, 0, 0);
+                BIT_ON(5630);
+                return;
+            } else if (!BIT_CHK(5569)) {
+                BIT_ON(5619);
+                AI_FUNCTION_009C(354, 212, 0, 0);
+                BIT_ON(5630);
+                return;
+            }
+        }
+    }
+
+    if (!BIT_CHK(5572)) {
+        if (var239 < 20) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else if (var239 < (20 + 20)) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else if (var239 < ((20 + 20) + 20)) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else if (var239 < (((20 + 20) + 20) + 30)) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        }
+    } else if (BIT_CHK(5572)) {
+        if (var239 < 30) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else if (var239 < (20 + 5)) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else if (var239 < ((20 + 20) + 25)) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else if (var239 < (((20 + 20) + 20) + 20)) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else if (var239 < ((((20 + 20) + 20) + 20) + 20)) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else {
+            AI_ACT_PERSONA(7, 143);
+            AI_FUNCTION_0048();
+            AI_MINE();
+            return;
+        }
+    } else {
+        AI_FUNCTION_0048();
+        AI_MINE();
+        return;
+    }
+
+    AI_FUNCTION_0042();
+}
+
+// Procedure Index: 236
+void AI_P_TUKIBITOA_R_hook() {
+    int var241;
+
+    if (BUFF_ALLIES_CHECK(SpecialEffects.DefenseBuff) == 0) {
+        BIT_OFF(5578);
+    }
+
+    if (AI_CHK_ENEMY_STATUS(StatusEffects.Fear) == 1) {
+        BIT_ON(5578);
+    }
+
+    var241 = AI_RND(100);
+
+    if (!BIT_CHK(5578)) {
+        if (var241 < 10) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else if (var241 < (10 + 20)) {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        } else {
+            AI_ACT_PERSONA(7, 143);
+            AI_TAR_RND();
+            return;
+        }
+    } else if (BIT_CHK(5578)) {
+        AI_ACT_PERSONA(7, 143);
+        AI_TAR_STATUS(StatusEffects.Fear);
+        return;
+    }
+
+    AI_FUNCTION_0042();
+}

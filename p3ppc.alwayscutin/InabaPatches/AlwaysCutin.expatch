@@ -1,0 +1,23 @@
+[replacement Always Cutin]
+pattern = 49 8B CE E8 82 4F 03 00 44 0F B7 E8 66 83 F8 FF 74 56 B9 64
+offset = 19
+replacement = bytes( 14 )
+
+
+0 is 4/1
+june 8th
+30 31 8
+july 7th
+30 31 30 
+august 6th
+30 31 30 31 
+september 5th
+30 31 30 31 31 5
+octobenr 4th
+30 31 30 31 31 30 4
+november 3rd
+30 31 30 31 31 30 31 5
+november 22nd
+30 31 30 31 31 30 31 22
+january 31st
+30 31 30 31 31 30 31 30 31 31

@@ -1,0 +1,10 @@
+[replacement Instant Weapon Fusion]
+pattern = 48 83 c4 20 5f c3 ff c8 01 D8 48 8B 5C 24 ?? 48 83 C4 20 5F C3
+offset = 8
+replacement = bytes( 8B C3 )
+
+[replacement Instant Weapon Fusion PT 2]
+pattern = 48 8b 74 24 30 8D 43 ?? 44 01 D0
+offset = 5
+replacement = bytes( 90 90 90 )
+

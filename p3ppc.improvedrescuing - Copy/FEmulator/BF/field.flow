@@ -1,0 +1,236 @@
+import( "field.msg" );
+
+// Procedure Index: 17
+void find_missing_person_hook()
+{
+    int var20;
+    int var21;
+    int var22;
+    var20 = FLD_FUNCTION_0004();
+    
+    if ( var20 == 45 )
+    {
+        var21 = 74;
+        var22 = 0;
+    }
+    else if ( ( var20 >= 46 ) && ( var20 <= 51 ) )
+    {
+        var21 = 75;
+        var22 = 1;
+    }
+    else if ( ( var20 >= 52 ) && ( var20 <= 61 ) )
+    {
+        var21 = 76;
+        var22 = 2;
+    }
+    else if ( ( var20 >= 62 ) && ( var20 <= 69 ) )
+    {
+        var21 = 77;
+        var22 = 3;
+    }
+    else if ( ( var20 >= 70 ) && ( var20 <= 83 ) )
+    {
+        var21 = 78;
+        var22 = 4;
+    }
+    else if ( ( var20 >= 84 ) && ( var20 <= 95 ) )
+    {
+        var21 = 79;
+        var22 = 5;
+    }
+    else if ( ( var20 >= 96 ) && ( var20 <= 101 ) )
+    {
+        var21 = 80;
+        var22 = 6;
+    }
+    else if ( ( var20 >= 102 ) && ( var20 <= 108 ) )
+    {
+        var21 = 81;
+        var22 = 7;
+    }
+    else if ( ( var20 >= 109 ) && ( var20 <= 120 ) )
+    {
+        var21 = 82;
+        var22 = 8;
+    }
+    else if ( ( var20 >= 121 ) && ( var20 <= 131 ) )
+    {
+        var21 = 83;
+        var22 = 9;
+    }
+    else if ( ( var20 >= 132 ) && ( var20 <= 137 ) )
+    {
+        var21 = 84;
+        var22 = 10;
+    }
+    else if ( ( var20 >= 138 ) && ( var20 <= 149 ) )
+    {
+        var21 = 85;
+        var22 = 11;
+    }
+    else if ( ( var20 >= 150 ) && ( var20 <= 152 ) )
+    {
+        var21 = 86;
+        var22 = 12;
+    }
+    else if ( ( var20 >= 153 ) && ( var20 <= 158 ) )
+    {
+        var21 = 87;
+        var22 = 13;
+    }
+    else if ( ( var20 >= 159 ) && ( var20 <= 168 ) )
+    {
+        var21 = 88;
+        var22 = 14;
+    }
+    else if ( ( var20 >= 169 ) && ( var20 <= 175 ) )
+    {
+        var21 = 89;
+        var22 = 15;
+    }
+    else if ( ( var20 >= 176 ) && ( var20 <= 185 ) )
+    {
+        var21 = 90;
+        var22 = 0x10;
+    }
+    else if ( ( var20 >= 186 ) && ( var20 <= 203 ) )
+    {
+        var21 = 91;
+        var22 = 17;
+    }
+    else if ( ( var20 >= 204 ) && ( var20 <= 224 ) )
+    {
+        var21 = 92;
+        var22 = 18;
+    }
+    else if ( ( var20 >= 225 ) && ( var20 <= 250 ) )
+    {
+        var21 = 93;
+        var22 = 19;
+    }
+    else 
+    {
+        var21 = 94;
+    }
+
+    MSG_WND_DSP();
+    MSG( var21 );
+    MSG_WND_CLS();
+    FUNCTION_0064( 0, 0, 0, 6, 3, 0, 0 );
+    MSG_WND_DSP();
+    MSG( MISSING_PERSON_RESUCURE );
+    FUNCTION_0065( 0 );
+    MSG( MISSING_PERSON_Q );
+    SEL_DEFKEY( 14, 2 );
+	
+    if ( SEL( MISSING_PERSON_SELL ) == 0 )
+    {
+        FLD_FUNCTION_005C( var22 );
+        BIT_ON( 4348 );
+        MSG_WND_CLS();
+        BIT_ON( 3193 );	
+		if (gVar27 == 0 && BIT_CHK(326))
+		{
+			MSG_WND_DSP();
+			MSG(RETURN_TO_AKIHIKO);
+			MSG_WND_CLS();
+			FADE(3, 20);
+			FUNCTION_000F();
+			MSG_WND_DSP();
+			MSG(RETURN_TO_AKIHIKO + 1);
+			MSG_WND_CLS();
+		}
+		else if (gVar29 == 0 && BIT_CHK(328))
+		{
+			MSG_WND_DSP();
+			MSG(RETURN_TO_SHINJI);
+			MSG_WND_CLS();
+			FADE(3, 20);
+			FUNCTION_000F();
+			MSG_WND_DSP();
+			MSG(RETURN_TO_SHINJI + 1);
+			MSG_WND_CLS();
+		}
+		else if (gVar25 == 0 && BIT_CHK(324))
+		{
+			MSG_WND_DSP();
+			MSG(RETURN_TO_MITSURU);
+			MSG_WND_CLS();
+			FADE(3, 20);
+			FUNCTION_000F();
+			MSG_WND_DSP();
+			MSG(RETURN_TO_MITSURU + 1);
+			MSG_WND_CLS();
+		}
+		else if (gVar26 == 0 && BIT_CHK(325))
+		{
+			MSG_WND_DSP();
+			MSG(RETURN_TO_JUNPEI);
+			MSG_WND_CLS();
+			FADE(3, 20);
+			FUNCTION_000F();
+			MSG_WND_DSP();
+			MSG(RETURN_TO_JUNPEI + 1 );
+			MSG_WND_CLS();
+		}
+		else if (gVar24 == 0 && BIT_CHK(323))
+		{
+			MSG_WND_DSP();
+			MSG(RETURN_TO_AIGIS);
+			MSG_WND_CLS();
+			FADE(3, 20);
+			FUNCTION_000F();
+			MSG_WND_DSP();
+			MSG(RETURN_TO_AIGIS + 1);
+			MSG_WND_CLS();
+		}
+		else if (gVar23 == 0 && BIT_CHK(322))
+		{
+			MSG_WND_DSP();
+			MSG(RETURN_TO_YUKARI);
+			MSG_WND_CLS();
+			FADE(3, 20);
+			FUNCTION_000F();
+			MSG_WND_DSP();
+			MSG(RETURN_TO_YUKARI + 1);
+			MSG_WND_CLS();
+		}
+		else if (gVar28 == 0 && BIT_CHK(327))
+		{
+			MSG_WND_DSP();
+			MSG(RETURN_TO_KEN);
+			MSG_WND_CLS();
+			FADE(3, 20);
+			FUNCTION_000F();
+			MSG_WND_DSP();
+			MSG(RETURN_TO_KEN + 1);
+			MSG_WND_CLS();
+		}
+		else if (gVar30 == 0 && BIT_CHK(329))
+		{
+			MSG_WND_DSP();
+			MSG(RETURN_TO_KOROMARU);
+			MSG_WND_CLS();
+			FADE(3, 20);
+			FUNCTION_000F();
+			MSG_WND_DSP();
+			MSG(RETURN_TO_KOROMARU + 1);
+			MSG_WND_CLS();
+		}
+		
+			FCL_FUNCTION_0004(var20);
+			return;
+		}
+	
+    else if ( SEL( MISSING_PERSON_SELL ) == 1 )
+    {
+        FLD_FUNCTION_005C( var22 );
+        BIT_ON( 4348 );
+        MSG_WND_CLS();
+        BIT_ON( 3193 );
+        return_to_entrance();
+        return;
+    }
+
+    MSG_WND_CLS();
+}

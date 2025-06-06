@@ -1,0 +1,70 @@
+
+void init_enter_hook()
+{
+    BIT_ON( 0 + 0x0400 + 0x0800 + 3 );
+    get_reach_level();
+    init_dungeon();
+    check_dungeon();
+    
+    if ( GET_FLOOR_ID() == 160 )
+    {
+		//Comment out to keep your usual inventory
+        FUNCTION_009A();
+		
+		//Comment out to use hollow forest inventory (no costumes)
+		for (int i = 1793; i < 1983; i++)
+		{
+			//Give 99 of each costume if it isn't a placeholder
+			if (i != 1981 && i != 1973 && i != 1965 && i != 1957 && i != 1949 && i != 1941 && i != 1933 && i != 1925 && i != 1917 && i != 1912 && i != 1909 && i != 1901 && i != 1893 && i != 1887 && i != 1885 && i != 1884 && i != 1883 && i != 1877 && i != 1872	&& i != 1870 && i != 1869 && i != 1866 && i != 1865 && i != 1861 && i != 1853 && i != 1845 && i != 1839	&& i != 1837 && i != 1836 && i != 1835 && i != 1829 && i != 1824 && i != 1821 && i != 1813 && i != 1808 && i != 1805 && i != 1797 )
+				SET_ITEM( i, 99 );
+		}
+    }
+
+}
+
+void out_dungeon_hook()
+{
+    BIT_OFF( 0 + 0x0400 + 0x0800 + 3 );
+    
+    if ( GET_FLOOR_ID() == 120 || GET_FLOOR_ID() == 160 )
+    {
+        BIT_OFF( 0 + 0x0400 + 0x0800 + 92 );
+        
+        if ( GET_FLOOR_ID() == 160 )
+        {
+		
+			//Comment out to keep your usual inventory
+            FUNCTION_009B();
+			
+        }
+
+    }
+
+}
+
+void bossroom_door_hook()
+{
+    OPEN_MSG_WIN();
+    int localVariable7 = NAVI_BU_OPEN( 280, -40, 5, 0x20 );
+    MSG( BOSSROOM_DOOR );
+    NAVI_BU_CLOSE( localVariable7 );
+    change_speaker();
+    MSG( OPEN_DOOR_OK );
+    SEL_CHK_PAD( 14, 1 );
+    int localVariable6 = SEL( YESNO_SEL );
+    CLOSE_MSG_WIN();
+    
+    if ( localVariable6 == 0 )
+    {
+        FADE( 1, 10 );
+        FADE_SYNC();
+        eve_marie_bossroom();
+        BIT_OFF( 0 + 0x0400 + 0x0800 + 92 );
+		
+		//Comment out to keep your usual inventory
+        FUNCTION_009B();
+		
+        out_tv_world();
+    }
+
+}

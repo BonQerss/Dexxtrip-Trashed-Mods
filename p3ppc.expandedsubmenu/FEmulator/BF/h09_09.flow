@@ -1,0 +1,14 @@
+import("Common/StripMall.flow");
+
+global bool isFieldBf;
+
+void f009_009_shortcut_hook()
+{
+    isFieldBf = false;
+    stripmall_shortcut();
+}
+
+void CallOriginalSquareMenu()
+{
+    f009_009_shortcut();
+} 

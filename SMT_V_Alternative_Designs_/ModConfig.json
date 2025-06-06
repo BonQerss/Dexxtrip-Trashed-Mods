@@ -1,0 +1,40 @@
+{
+  "ModId": "SMT_V_Alternative_Designs_",
+  "ModName": "SMT V Alternative Designs\u002B",
+  "ModAuthor": "Dexxtrip",
+  "ModVersion": "1.0.0",
+  "ModDescription": "Backports alternative demon designs from SMT V to P4G",
+  "ModDll": "SMT_V_Alternative_Designs_.dll",
+  "ModIcon": "Preview.png",
+  "ModR2RManagedDll32": "x86/SMT_V_Alternative_Designs_.dll",
+  "ModR2RManagedDll64": "x64/SMT_V_Alternative_Designs_.dll",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "Tags": [],
+  "CanUnload": null,
+  "HasExports": null,
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "SMT_V_Alternative_Designs_.ReleaseMetadata.json",
+  "PluginData": {
+    "GitHubDependencies": {
+      "IdToConfigMap": {
+        "reloaded.sharedlib.hooks": {
+          "Config": {
+            "UserName": "Sewer56",
+            "RepositoryName": "Reloaded.SharedLib.Hooks.ReloadedII",
+            "UseReleaseTag": true,
+            "AssetFileName": "reloaded.sharedlib.hooks.zip"
+          },
+          "ReleaseMetadataName": "Sewer56.Update.ReleaseMetadata.json"
+        }
+      }
+    }
+  },
+  "IsUniversalMod": false,
+  "ModDependencies": [
+    "reloaded.sharedlib.hooks"
+  ],
+  "OptionalDependencies": [],
+  "SupportedAppId": [],
+  "ProjectUrl": ""
+}

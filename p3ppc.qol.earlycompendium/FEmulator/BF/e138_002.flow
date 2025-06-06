@@ -1,0 +1,43 @@
+// 
+// Procedure declarations
+// 
+
+// Procedure Index: 0
+void SCR_e138_002_hook()
+{
+    int var0;
+    EVT_FUNCTION_0002();
+    FADE( 1, 0 );
+    CALL_BG_IMG( 8, 13, 0, 1 );
+    BGM( 54 );
+    FUNCTION_000D( 50 );
+    WAIT( 30 );
+    MSG_WND_DSP();
+    MSG( MSG_000 );
+    var0 = SEL( SEL_001 );
+	BIT_ON( 4611 );
+	BIT_ON( 4612 );
+	BIT_ON( 4613 );
+    if ( var0 == 1 )
+    {
+        MSG( MSG_002 );
+    }
+    else if ( var0 == 2 )
+    {
+        MSG( MSG_003 );
+    }
+
+    MSG( MSG_004 );
+    MSG_WND_CLS();
+    WAIT( 30 );
+    MSG_WND_DSP();
+    MSG( MSG_005 );
+    MSG( MSG_006 );
+    MSG_WND_CLS();
+    FADE( 1, 50 );
+    FUNCTION_0024( 267 );
+    WAIT( 30 );
+    BGM_STOP( 0 );
+    EVT_FUNCTION_0001();
+}
+

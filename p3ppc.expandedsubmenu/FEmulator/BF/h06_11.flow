@@ -1,0 +1,12 @@
+import("Common/School.flow");
+
+global bool isFieldBf;
+
+void f006_011_shortcut_hook() {
+    isFieldBf = false;
+    f006_011_shortcut_unhooked();
+}
+
+void CallOriginalSquareMenu() {
+    f006_011_shortcut();
+} 

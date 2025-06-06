@@ -1,0 +1,357 @@
+
+import( "FortuneTeller.msg" );
+
+void comu_fortune_soso()
+{
+	int progress;
+    int fourBytes = GET_COUNT(-4683);
+    int charm = fourBytes / 65536; // the count is 4 bytes but this is only two, grab the last two bytes (wish we had >>)
+    int academics = (fourBytes * 65536) /  65536; // grab the other two bytes (wish we had &)
+    int courage = (GET_COUNT(-4682) * 65536) /  65536; // Just in case the next two bytes are ever used (don't seeem to be)
+    SET_MSG_VAR(0, academics, 0);
+    SET_MSG_VAR(1, charm, 0);
+    SET_MSG_VAR(2, courage, 0);
+    MSG_WND_DSP();
+	MSG( ORB_PONDER );
+    MSG_WND_CLS();
+	
+	
+	int required;
+if (academics < 20)
+{
+	
+  required = 20 - academics; //(-0 if you want to I guess)
+  progress = 100 - 100 * required / (20 - 0);
+  SET_MSG_VAR(0, progress, 0);
+}
+else if (academics < 55)
+{
+  required = 55 - academics;
+  progress = 100 - 100 * required / (55 - 20);
+  SET_MSG_VAR(0, progress, 0);
+}
+else if (academics < 100 )
+{
+  required = 100 - academics;
+  progress = 100 - 100 * required / (100 - 55);
+  SET_MSG_VAR(0, progress, 0);
+}
+ else if (academics < 155 )
+{
+  required = 155 - academics;
+  progress = 100 - 100 * required / (155 - 100);
+  SET_MSG_VAR(0, progress, 0);
+}
+ else if (academics < 230 )
+{
+  required = 230 - academics;
+  progress = 100 - 100 * required / (230 - 155);
+  SET_MSG_VAR(0, progress, 0);
+}
+else
+{
+  MSG_WND_DSP();
+  MSG(ACADEMICS_MAXU);
+  MSG_WND_CLS();
+}
+MSG_WND_DSP();
+if (progress < 25)
+	MSG(FORTUNE_ACADEMICS_PROGRESS_1 );
+else if (progress < 50)
+	MSG(FORTUNE_ACADEMICS_PROGRESS_2 );
+else if (progress < 75)
+	MSG(FORTUNE_ACADEMICS_PROGRESS_3 );
+else
+	MSG(FORTUNE_ACADEMICS_PROGRESS_4);
+MSG_WND_CLS();
+ 
+if (charm < 15)
+{
+  required = 15 - charm; //(-0 if you want to I guess)
+  progress = 100 - 100 * required / (15 - 0);
+  SET_MSG_VAR(0, progress, 0);
+}
+else if (charm < 30)
+{
+  required = 30 - charm;
+  progress = 100 - 100 * required / (30 - 15);
+  SET_MSG_VAR(0, progress, 0);
+}
+else if (charm < 45 )
+{
+  required = 45 - charm;
+  progress = 100 - 100 * required / (45 - 30);
+  SET_MSG_VAR(0, progress, 0);
+}
+ else if (charm < 70 )
+{
+  required = 70 - charm;
+  progress = 100 - 100 * required / (70 - 45);
+  SET_MSG_VAR(0, progress, 0);
+}
+ else if (charm <  100 )
+{
+  required = 100 - charm;
+  progress = 100 - 100 * required / (100 - 70);
+  SET_MSG_VAR(0, progress, 0);
+}
+else
+{
+  MSG_WND_DSP();
+  MSG(CHARM_MAXU);
+  MSG_WND_CLS();
+}
+MSG_WND_DSP();
+if (progress < 25)
+	MSG(FORTUNE_CHARM_PROGRESS_1 );
+else if (progress < 50)
+	MSG(FORTUNE_CHARM_PROGRESS_2 );
+else if (progress < 75)
+	MSG(FORTUNE_CHARM_PROGRESS_3 );
+else
+	MSG(FORTUNE_CHARM_PROGRESS_4 );
+MSG_WND_CLS();
+
+
+if (courage < 15)
+{
+  required = 15 - courage; //(-0 if you want to I guess)
+  progress = 100 - 100 * required / (15 - 0);
+  SET_MSG_VAR(0, progress, 0);
+}
+else if (courage < 30)
+{
+  required = 30 - courage;
+  progress = 100 - 100 * required / (30 - 15);
+  SET_MSG_VAR(0, progress, 0);
+}
+else if (courage < 45 )
+{
+  required = 45 - courage;
+  progress = 100 - 100 * required / (45 - 30);
+  SET_MSG_VAR(0, progress, 0);
+}
+ else if (courage < 65 )
+{
+  required = 65 - courage;
+  progress = 100 - 100 * required / (65 - 45);
+  SET_MSG_VAR(0, progress, 0);
+}
+ else if (courage <  80 )
+{
+  required = 80 - courage;
+  progress = 100 - 100 * required / (80 - 65);
+  SET_MSG_VAR(0, progress, 0);
+}
+else
+{
+  MSG_WND_DSP();
+  MSG(COURAGE_MAXU);
+  MSG_WND_CLS();
+}
+MSG_WND_DSP();
+if (progress < 25)
+	MSG(FORTUNE_COURAGE_PROGRESS_1 );
+else if (progress < 50)
+	MSG(FORTUNE_COURAGE_PROGRESS_2 );
+else if (progress < 75)
+	MSG(FORTUNE_COURAGE_PROGRESS_3 );
+else
+	MSG(FORTUNE_COURAGE_PROGRESS_4 );
+MSG_WND_CLS();
+
+int OMEGALUL = RND( 1000000000 );
+
+if ( OMEGALUL == 1000000000 && !BIT_CHK( 5445 ) )
+{
+	MSG_WND_DSP();
+	MSG( ORB_PONDER_2_CAT );
+	MSG_WND_CLS();
+	MSG_WND_DSP();
+	MSG( WTFWASTHAT );
+	MSG_WND_CLS();
+	BIT_ON(5445);
+}
+else {	
+	MSG_WND_DSP();
+	MSG( ORB_PONDER_2 );
+	MSG_WND_CLS();
+	return;
+	}
+}
+
+void comu_fortune()
+{
+    int fourBytes = GET_COUNT(-4683);
+    int charm = fourBytes / 65536; // the count is 4 bytes but this is only two, grab the last two bytes (wish we had >>)
+    int academics = (fourBytes * 65536) /  65536; // grab the other two bytes (wish we had &)
+    int courage = (GET_COUNT(-4682) * 65536) /  65536; // Just in case the next two bytes are ever used (don't seeem to be)
+    SET_MSG_VAR(0, academics, 0);
+    SET_MSG_VAR(1, charm, 0);
+    SET_MSG_VAR(2, courage, 0);
+    MSG_WND_DSP();
+	MSG( ORB_PONDER );
+    MSG_WND_CLS();
+	
+	
+	int required;
+if (academics < 20)
+{
+  required = 20 - academics; //(-0 if you want to I guess)
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG( ACADEMICS_LVL_IS );
+  MSG_WND_CLS();
+}
+else if (academics < 55)
+{
+  required = 55 - academics;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(ACADEMICS_LVL_IS);
+  MSG_WND_CLS();
+}
+else if (academics < 100 )
+{
+  required = 100 - academics;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(ACADEMICS_LVL_IS);
+  MSG_WND_CLS();
+}
+ else if (academics < 155 )
+{
+  required = 155 - academics;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(ACADEMICS_LVL_IS);
+  MSG_WND_CLS();
+}
+ else if (academics < 230 )
+{
+  required = 230 - academics;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(ACADEMICS_LVL_IS);
+  MSG_WND_CLS();
+}
+else
+{
+  MSG_WND_DSP();
+  MSG(ACADEMICS_MAXU);
+  MSG_WND_CLS();
+}
+ 
+if (charm < 15)
+{
+  required = 15 - charm; //(-0 if you want to I guess)
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(CHARM_LVL_IS);
+  MSG_WND_CLS();
+}
+else if (charm < 30)
+{
+  required = 30 - charm;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(CHARM_LVL_IS);
+  MSG_WND_CLS();
+}
+else if (charm < 45 )
+{
+  required = 45 - charm;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(CHARM_LVL_IS);
+  MSG_WND_CLS();
+}
+ else if (charm < 70 )
+{
+  required = 70 - charm;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(CHARM_LVL_IS);
+  MSG_WND_CLS();
+}
+ else if (charm <  100 )
+{
+  required = 100 - charm;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(CHARM_LVL_IS);
+  MSG_WND_CLS();
+}
+else
+{
+  MSG_WND_DSP();
+  MSG(CHARM_MAXU);
+  MSG_WND_CLS();
+}
+
+if (courage < 15)
+{
+  required = 15 - courage; //(-0 if you want to I guess)
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(COURAGE_LVL_IS);
+  MSG_WND_CLS();
+}
+else if (courage < 30)
+{
+  required = 30 - courage;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(COURAGE_LVL_IS);
+  MSG_WND_CLS();
+}
+else if (courage < 45 )
+{
+  required = 45 - courage;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(COURAGE_LVL_IS);
+  MSG_WND_CLS();
+}
+ else if (courage < 65 )
+{
+  required = 65 - courage;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(COURAGE_LVL_IS);
+  MSG_WND_CLS();
+}
+ else if (courage <  80 )
+{
+  required = 80 - courage;
+  SET_MSG_VAR(0, required, 0);
+  MSG_WND_DSP();
+  MSG(COURAGE_LVL_IS);
+  MSG_WND_CLS();
+}
+else
+{
+  MSG_WND_DSP();
+  MSG(COURAGE_MAXU);
+  MSG_WND_CLS();
+}
+
+int OMEGALUL = RND( 1000000000 );
+
+if ( OMEGALUL == 1000000000 && !BIT_CHK( 5445 ) )
+{
+	MSG_WND_DSP();
+	MSG( ORB_PONDER_2_CAT );
+	MSG_WND_CLS();
+	MSG_WND_DSP();
+	MSG( WTFWASTHAT );
+	MSG_WND_CLS();
+	BIT_ON(5445);
+}
+else {	
+	MSG_WND_DSP();
+	MSG( ORB_PONDER_2 );
+	MSG_WND_CLS();
+	return;
+	}
+}

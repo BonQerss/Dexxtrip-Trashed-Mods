@@ -1,0 +1,55 @@
+
+// Procedure Index: 41
+void net_commu_event_hook()
+{
+    int var36;
+    var36 = 14;
+    MSG_WND_CLS();
+    EVT_FUNCTION_000C( 0, var36 );
+    BIT_ON( 3029 );
+    BIT_ON( 3028 );
+    
+    if ( !BIT_CHK( 3036 ) )
+    {
+        BIT_ON( 2561 );
+        BIT_ON( 2562 );
+    }
+
+    
+    if ( EVT_FUNCTION_0005( var36 ) == 1 )
+    {
+        MSG_WND_DSP();
+        
+        if ( CMM_CHK_LVUP( var36 ) == 1 )
+        {
+            MSG( NET_COMMU_START_01 );
+            EVT_FUNCTION_0007( var36 );
+        }
+        else 
+        {
+            MSG( NET_COMMU_START_01 );
+        }
+
+        MSG_WND_CLS();
+        FADE( 1, 0 );
+        EVT_FUNCTION_000D();
+        BIT_ON( 3029 );
+    }
+    else 
+    {
+        FADE( 1, 0 );
+        FUNCTION_000F();
+        EVT_FUNCTION_000D();
+        EVT_FUNCTION_0004( var36 );
+    }
+
+    
+    if ( !BIT_CHK( 3036 ) && !BIT_CHK( 3214 ) )
+    {
+        FUNCTION_0036( FUNCTION_0030(), FUNCTION_0031(), 6 );
+    }
+
+    FUNCTION_0036( FUNCTION_0030(), FUNCTION_0031(), 5 );
+	NEXT_TIME();
+}
+

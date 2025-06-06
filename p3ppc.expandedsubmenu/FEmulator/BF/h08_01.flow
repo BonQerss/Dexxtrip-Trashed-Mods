@@ -1,0 +1,21 @@
+
+import("Common/Mall.flow");
+
+global bool isFieldBf;
+
+void f008_001_shortcut_hook()
+{
+    mall_shortcut();
+}
+
+void CallOriginalSquareMenu()
+{
+    f008_001_shortcut_hook();
+} 
+
+void f008_001_init_hook()
+{
+    SaveEveryday();
+
+    f008_001_init_unhooked();
+}

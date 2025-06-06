@@ -1,0 +1,3 @@
+encounter["Normal Battles"]:
+  advantage_bgm = 9231
+end

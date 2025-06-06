@@ -1,0 +1,98 @@
+
+import( "FortuneTeller.flow" );
+
+// Procedure Index: 38
+void comu_check_tv_hook()
+{
+    int var28;
+    int var29;
+	int var10;
+    MSG_WND_DSP();
+    
+    if ( FUNCTION_0033() == 0 )
+    {
+        MSG( TV_GOTO_SCHOOL );
+        MSG_WND_CLS();
+        return;
+    }
+    else if ( FUNCTION_0033() == 3 )
+    {
+        
+		if ( BIT_CHK( 3053 ) )
+        {
+            MSG_WND_DSP();
+            MSG( TV_NONE );
+            MSG_WND_CLS();
+            return;
+        }
+
+        
+        if ( ( FUNCTION_0030() == 1 ) && ( FUNCTION_0032() == 0 ) )
+        {
+            var28 = FLD_FUNCTION_003E();
+            FLD_FUNCTION_002E( 55 );
+            MSG_WND_DSP();
+            MSG( TV_TUUHAN_KOKUTI );
+            MSG_WND_CLS();
+            BIT_ON( 3053 );
+            MSG_WND_DSP();
+            MSG( TV_TUUHAN_JANUARY );
+            MSG_WND_CLS();
+            BIT_ON( 3034 );
+            FLD_FUNCTION_002E( var28 );
+            return;
+        }
+
+        var29 = EVT_FUNCTION_0025();
+        
+        if ( var29 == 0 )
+        {
+            MSG_WND_DSP();
+			MSG( TVTIME_CHOICE );
+			SEL_DEFKEY( 14, 1 );
+            var10 = SEL( FORTUNE_TELLER_TANAKA );
+			if ( var10 == 0 )
+            {
+				comu_fortune();
+            }
+            else
+            {
+                MSG_WND_CLS();
+                return;
+			}
+        }
+        else 
+        {
+            comu_tuuhan();
+            return;
+        }
+
+    }
+    else if ( FUNCTION_0033() == 5 )
+    {
+        MSG_WND_DSP();
+		MSG( TVTIME_CHOICE );
+			SEL_DEFKEY( 14, 1 );
+            var10 = SEL( FORTUNE_TELLER_TANAKA );
+			if ( var10 == 0 )
+            {
+				MSG_WND_DSP();
+				MSG( FUZZY_PIC );
+				int SELECTION = SEL( MORE_OR_LESS );
+				if ( SELECTION == 0 )
+				{
+					comu_fortune();
+				}
+				else
+				{
+					comu_fortune_soso();
+				}
+            }
+            else
+            {
+                MSG_WND_CLS();
+                return;
+			}
+    }
+
+}

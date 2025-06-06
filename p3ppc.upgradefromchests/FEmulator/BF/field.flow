@@ -1,0 +1,155 @@
+import( "field.msg" );
+
+bool allly_in_party(int id) {
+    for (int i = 0; i < 3; i++) {
+        if (FUNCTION_0042(i) == id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Function to find the index of a given item in an array
+int findIndex(int startIndex, int size, int item) {
+    // The combined equipment array
+    int equipment[134] = {
+        // Yukari
+        172, 160, 166, 173, 163, 181, 161, 169, 167, 174, 162, 168, 175, 170, 177, 176, 182, 183,
+        // Aigis
+        199, 213, 205, 201, 194, 200, 206, 196, 195, 209, 197, 208, 214,
+        // Mitsuru
+        32, 266, 256, 37, 33, 258, 257, 268, 34, 267, 36, 259, 260, 35, 265, 274, 276,
+        // Junpei
+        1, 7, 6, 13, 25, 28, 22, 8, 5, 16, 27, 3, 9, 2, 10, 18, 11, 29, 17, 4, 12, 23, 24,
+        // Akihiko
+        73, 65, 79, 70, 85, 77, 71, 66, 78, 74, 75, 68, 72, 67, 81, 76, 69, 86, 87,
+        // Ken
+        140, 149, 128, 136, 132, 130, 129, 142, 143, 137, 138, 139, 144, 145, 133, 150, 151,
+        // Shinjiro
+        105, 117, 109, 100, 98, 104, 106, 112, 111, 110, 101, 107, 113, 119, 118,
+        // Koromaru
+        238, 244, 227, 237, 231, 236, 225, 239, 232, 240, 241, 245
+    };
+
+    for (int i = 0; i < size; i++) {
+        if (equipment[startIndex + i] == item) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// Function to handle the equipment logic for a character
+void handleEquipment(int allyID, int startIndex, int equipSize, int currentItem, int foundItem) {
+    int currentItemIndex = findIndex(startIndex, equipSize, currentItem);
+    int foundItemIndex = findIndex(startIndex, equipSize, foundItem);
+
+    if (currentItemIndex != -1 && foundItemIndex != -1) {
+        if (currentItemIndex < foundItemIndex) {
+            SET_MSG_VAR(0, foundItem, 5);
+            MSG(WOULDYOULIKETOY + ( allyID - 2 ));
+            }
+            int SEL = SEL(YEAHMANIWANNADOIT);
+            if (SEL == 0) {
+                SET_EQUIP(allyID, 0, foundItem);
+                MSG(UPGRADE_YUKARI + ( allyID - 2 ) );
+                SET_ITEM_NUM( foundItem, ( GET_ITEM_NUM(foundItem) - 1 ) );
+            }
+    }
+}
+
+void processCharacters(int foundItem) {
+    // Sizes of the equipment arrays for each character
+    int sizes[8] = {18, 13, 17, 23, 19, 17, 15, 12};
+
+    // Starting indexes of each character's equipment in the combined array
+    int indexes[8] = {0, 18, 31, 48, 71, 90, 107, 122};
+
+    int allyID;
+    int currentItem;
+
+    for (int i = 2; i < 10; i++) {
+        if (i >= 6) {
+            allyID = (i + 1);
+        } else {
+            allyID = i;
+        }
+
+        if (BIT_CHK(320 + i) && allly_in_party(allyID)) {
+            currentItem = GET_EQUIP(allyID, 0);
+            handleEquipment(allyID, indexes[i - 2], sizes[i - 2], currentItem, foundItem);
+        }
+    }
+}
+
+void field_tbox_get_hook()
+{
+    int var0;
+    int var1;
+    int var2;
+    int var3;
+    int var4;
+    int var5;
+    int var6;
+    FLD_FUNCTION_0040();
+    MSG_WND_DSP();
+    
+    if ( FLD_FUNCTION_0027() == 1 )
+    {
+        MSG( OPEN_RARE_TBOX );
+    }
+
+    var0 = FUNCTION_0018( 11, 0 );
+    var1 = 0;
+    
+    if ( FLD_FUNCTION_0035() == 0 )
+    {
+        var1 = FLD_FUNCTION_000A();
+        var2 = FLD_FUNCTION_000C();
+        SET_MSG_VAR( 0, var1, 1 );
+        SET_MSG_VAR( 1, var2, 0 );
+        MSG( GET_ITEM_MES );
+
+        processCharacters(var1);
+    }
+    else 
+    {
+        var3 = ( RND( 199 ) + 1 );
+        var4 = ( RND( 2999 ) + 100 );
+        var5 = ( ( RND( 599 ) + 100 ) / 100 );
+        
+        if ( var3 <= 100 )
+        {
+            var6 = ( FLD_FUNCTION_0035() - ( ( FLD_FUNCTION_0035() * var4 ) / 10000 ) );
+        }
+        else 
+        {
+            var6 = ( FLD_FUNCTION_0035() + ( ( FLD_FUNCTION_0035() * var4 ) / 10000 ) );
+        }
+
+        
+        if ( var5 == 5 )
+        {
+            var6 = ( var6 / 10 );
+        }
+        else if ( var5 == 6 )
+        {
+            var6 = ( var6 * 2 );
+        }
+
+        ADD_PC_MONEY( var6 );
+        SET_MSG_VAR( 2, var6, 0 );
+        MSG( GET_MONEY_MES );
+    }
+
+    MSG_WND_CLS();
+    FUNCTION_001A( var0 );
+    FLD_FUNCTION_000E();
+    
+    if ( var1 != 0 )
+    {
+        SET_ITEM_NUM( var1, ( GET_ITEM_NUM( var1 ) + var2 ) );
+    }
+
+    FUNCTION_001A( var0 );
+}

@@ -1,0 +1,545 @@
+import( "dialogue.msg" );
+
+
+bool ally_in_party(int id) {
+    for (int i = 0; i < 3; i++) {
+        if (FUNCTION_0042(i) == id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int get_avail_mask() {
+    int cAllyID;
+    int var4 = 0;
+    // loop through 2-9 for char bitflag ids
+    for (int i = 2; i < 10; i++) {
+        // adjust for actual character ids
+        if (i >= 6) { // fuuka check
+            cAllyID = (i + 1);
+        } else {
+            cAllyID = i;
+        }
+        if (ally_in_party(cAllyID)) {
+            var4 += 1; // increase party member count
+        }
+    }
+    return var4; // return party count
+}
+
+void after_dialogue_process()
+{
+    int var4 = 0;
+    int var5;
+    int var6;
+    int var7;
+    int var8;
+    var4 = get_Avail_mask();
+
+    if ( var4 == 0 ) 
+    {
+        if (BIT_CHK(321)) 
+        {
+            var6 = 12;
+        }
+        else
+        {
+            var6 = 11;
+        }
+    }
+    else 
+    {
+        var5 = RND( var4 -  3 );
+        for (int i = 0; i < var5; i++ )
+        {
+            int partyVal = FUNCTION_0042(i); // returns 2 to 10
+            int bitmask = 0;
+
+            if (partyVal == 2) bitmask = 2; // Yukari in Party
+            else if (partyVal == 3) bitmask = 4; // Aigis in Party
+            else if (partyVal == 4) bitmask = 8; // Mitsuru in Party
+            else if (partyVal == 5) bitmask = 16; // Junpei in Party
+            else if (partyVal == 6) bitmask = 32; // Fuuka, ignore
+            else if (partyVal == 7) bitmask = 64; // Akihiko in party
+            else if (partyVal == 8) bitmask = 128; // Ken in party
+            else if (partyVal == 9) bitmask = 256; // Shinjiro in party
+            else if (partyVal == 10) bitmask = 512; // Koromaru in party
+
+            // Example ( 14 = Yukari, Aigis, Mitsuru in Party )
+
+            int combinedMask = combinedMask + bitmask;
+        }
+
+        var7 = combinedMask;
+      }
+
+        int YukaVar = RND(6);
+        int YukaOffset = 6 * YukaVar;
+        bool fuukaOn;
+
+        if ( var6 == 12 )
+        {
+            int fuukaCheck = RND( 1 );
+            
+            if ( fuukaCheck ) == 1
+            {
+                fuukaOn = true;
+            }
+        }
+
+        if ( var6 == 11 )
+        {
+            int RandMitsuruNavi = RND(1)
+            
+            if RandMitsuruNavi == 1
+            {
+                bool RandMitsuruNaviTRUE = true;
+            }
+            
+            bool MitsuruNavi == true;
+        }
+
+        int baseMsg = -1;
+        int baseSel = -1;
+        int msg0 = -1;
+        int msg1 = -1;
+        int msg2 = -1;
+        int msgEnd = -1;
+
+        if (var7 == 2) // Yukari
+        {
+            baseMsg = MSG_000_0_0;
+            baseSel = SEL_001_0_0;
+            msg0 = MSG_002_0_0;
+            msg1 = MSG_003_0_0;
+            msg2 = MSG_004_0_0;
+            msgEnd = MSG_005_0_0;
+        }
+        else if (var7 == 16) // Junpei
+        {
+            baseMsg = MSG_031_0_0;
+            baseSel = SEL_032_0_0;
+            msg0 = MSG_033_0_0;
+            msg1 = MSG_034_0_0;
+            msg2 = MSG_035_0_0;
+            msgEnd = MSG_036_0_0;
+        }
+        else if (var7 == 64) // Akihiko
+        {
+            baseMsg = MSG_061_0_0;
+            baseSel = SEL_062_0_0;
+            msg0 = MSG_063_0_0;
+            msg1 = MSG_064_0_0;
+            msg2 = MSG_065_0_0;
+            msgEnd = MSG_066_0_0;
+        }
+        else if (var7 == 8) // Mitsuru
+        {
+            baseMsg = MSG_090_0_0;
+            baseSel = SEL_091_0_0;
+            msg0 = MSG_092_0_0;
+            msg1 = MSG_093_0_0;
+            msg2 = MSG_094_0_0;
+            msgEnd = MSG_095_0_0;
+        }
+        else if (var7 == 4) // Aigis
+        {
+            baseMsg = MSG_118_0_0;
+            baseSel = SEL_119_0_0;
+            msg0 = MSG_120_0_0;
+            msg1 = MSG_121_0_0;
+            msg2 = MSG_122_0;
+            msgEnd = MSG_123_0_0;
+        }
+        else if (var7 == 128) // Ken
+        {
+            baseMsg = MSG_174_0_0;
+            baseSel = SEL_175_0_0;
+            msg0 = MSG_176_0_0;
+            msg1 = MSG_177_0_0;
+            msg2 = MSG_178_0;
+            msgEnd = MSG_179_0_0;
+        }
+        else if (var7 == 512) // Koromaru
+        {
+            baseMsg = MSG_204_0_0;
+            baseSel = SEL_205_0_0;
+            msg0 = MSG_206_0_0;
+            msg1 = MSG_207_0_0;
+            msg2 = MSG_208_0;
+            msgEnd = MSG_209_0_0;
+        }
+        else if (var7 == 256) // Shinjiro
+        {
+            if (YukaVar == 0)
+            {
+                MSG_WND_DSP();
+                MSG(MSG_253_0_0);
+                MSG(MSG_254_0_0);
+                int sel = SEL(SEL_255_0_0);
+
+                if (sel == 0) MSG(MSG_256_0_0);
+                else if (sel == 1) MSG(MSG_257_0_0);
+                else if (sel == 2) MSG(MSG_258_0);
+
+                MSG(MSG_259_0_0);
+                MSG_WND_CLS();
+            }
+            else if (YukaVar == 1)
+            {
+                MSG_WND_DSP();
+                MSG(MSG_260_0_0);
+                int sel = SEL(SEL_261_0_0);
+
+                if (sel == 0) MSG(MSG_262_0_0);
+                else if (sel == 1) MSG(MSG_263_0_0);
+                else if (sel == 2) MSG(MSG_264_0);
+
+                MSG_WND_CLS();
+            }
+            else
+            {
+                MSG_WND_DSP();
+                MSG(MSG_265_0_0 + YukaOffset);
+                int sel = SEL(SEL_266_0_0 + YukaOffset);
+
+                if (sel == 0) MSG(MSG_267_0_0 + YukaOffset);
+                else if (sel == 1) MSG(MSG_268_0_0 + YukaOffset);
+                else if (sel == 2) MSG(MSG_269_0 + YukaOffset);
+
+                MSG(MSG_270_0_0 + YukaOffset);
+                MSG_WND_CLS();
+            }
+        }
+        else if ( var7 == 24 ); // Junpei and Mitsuru
+        {
+            MSG( MSG_283_0_0 );
+            MSG( MSG_284_0_0 );
+            MSG( MSG_285_0_0 );
+            MSG( MSG_286_0_0 );
+            MSG( MSG_287_0_0 );
+        }
+        else if ( var7 == 8 && fuukaOn ) // Mitsuru and Fuuka
+        {
+            MSG( MSG_288_0_0 );
+            MSG( MSG_289_0_0 );
+            MSG( MSG_290_0_0 );
+        }
+        else if ( var7 == 4 && fuukaOn ) // Aigis and Fuuka
+        {
+            MSG_WND_DSP();
+            MSG(MSG_291_0_0);
+
+            int sel = SEL(SEL_292_0_0);
+            if ( sel == 0 ) MSG(MSG_293_0_0);
+            else if ( sel == 1 ) MSG(MSG_294_0_0);
+            else if ( sel == 2 ) MSG(MSG_295_0_0);
+
+            MSG(MSG_296_0_0);
+            MSG(MSG_297_0_0);
+            MSG_WND_CLS();
+        }
+        else if ( var7 == 64 && fuukaOn ) // Akihiko and Fuuka
+        {
+            MSG(MSG_298_0_0);
+            MSG(MSG_299_0_0);
+
+            int MSG = SEL(SEL_300_0_0);
+
+            if MSG == 0
+            {
+                MSG(MSG_301_0_0);
+                MSG(MSG_304_0_0);
+            }
+            if MSG == 1
+            {
+                MSG(MSG_302_0_0)
+                MSG(MSG_305_0_0);
+            }
+            if MSG == 2
+            {
+                MSG(MSG_303_0_0);
+                MSG(MSG_306_0_0);
+            }
+
+            MSG(MSG_307_0_0);
+            MSG(MSG_308_0_0);
+            MSG_WND_CLS();
+        }
+        else if ( var7 == 128 && fuukaOn ) // Ken and Fuuka
+        {
+            MSG_WND_DSP();
+            MSG(MSG_309_0_0);
+            MSG(MSG_310_0_0);
+            MSG(MSG_311_0_0);
+
+            int sel = SEL(SEL_312_0_0);
+            if ( sel == 0 ) MSG(MSG_313_0_0);
+            else if ( sel == 1 ) MSG(MSG_314_0_0);
+            else if ( sel == 2 ) MSG(MSG_315_0_0);
+
+            MSG(MSG_316_0_0);
+            MSG(MSG_317_0_0);
+            MSG(MSG_318_0_0);
+            MSG_WND_CLS();
+        }
+        else if ( var7 == 2 && fuukaOn ) // Yukari and Fuuka
+        {
+
+            int randFuukaYuka = RND(2);
+
+            if ( randFuukaYuka == 1 )
+            {
+                MSG_WND_DSP();
+                MSG(MSG_319_0_0);
+                MSG(MSG_320_0_0);
+                MSG(MSG_321_0_0);
+                MSG(MSG_322_0_0);
+    
+                int sel = SEL(SEL_323_0_0);
+                if ( sel == 0 ) MSG(MSG_324_0_0);
+                else if ( sel == 1 ) MSG(MSG_325_0_0);
+                else if ( sel == 2 ) MSG(MSG_326_0_0);
+    
+                MSG(MSG_327_0_0);
+                MSG(MSG_328_0_0);
+                MSG(MSG_329_0_0);
+            }
+            else
+            {
+                MSG_WND_DSP();
+                MSG(MSG_330_0_0);
+
+                int sel = SEL(SEL_331_0_0);
+                if ( sel == 0 ) MSG(MSG_332_0_0);
+                else if ( sel == 1 ) MSG(MSG_333_0_0);
+                else if ( sel == 2 ) MSG(MSG_334_0_0);
+
+                MSG(MSG_335_0_0);
+                MSG(MSG_336_0_0);
+                MSG(MSG_337_0_0);
+                MSG(MSG_338_0_0);
+                MSG_WND_CLS();
+            }
+            
+        }
+        else if ( var7 == 16 && fuukaOn ) // Junpei and Fuuka
+        {
+            MSG_WND_DSP();
+            MSG(MSG_339_0_0);
+            
+            int MSG = SEL(SEL_340_0_0);
+
+            if MSG == 0
+            {
+                MSG(MSG_341_0_0);
+                MSG(MSG_345_0_0);
+            }
+            if MSG == 1
+            {
+                MSG(MSG_342_0_0);
+                MSG(MSG_346_0_0);
+            }
+            if MSG == 2
+            {
+                MSG(MSG_343_0_0);
+                MSG(MSG_347_0_0);
+            }
+        }
+        else if ( var7 == 18 && MitsuruNavi ) // Yukari and Junpei and Mitsuru
+        {
+            int RandYukaJun = RND(4);
+            if RandYukaJun == 0 
+            {
+                MSG_WND_DSP();
+                MSG(MSG_000_0_00);
+                MSG(MSG_001_0_00);
+                MSG(MSG_002_0_00);
+                MSG(MSG_003_0_00);
+                MSG(MSG_004_0_00);
+                MSG(MSG_005_0_00);
+                MSG(MSG_006_0_00);
+                MSG_WND_CLS();
+            }
+            if RandYukaJun == 1
+            {
+                MSG_WND_DSP();
+                MSG(MSG_007_0_00);
+
+                int sel = SEL(SEL_008_0_00);
+                if ( sel == 0 )
+                {
+                    MSG(MSG_009_0_00);
+                    MSG(MSG_010_0_00);
+                }
+                else if ( sel == 1 ) MSG(MSG_010_5_00);
+                else if ( sel == 2 ) MSG(MSG_011_0_00);
+
+                MSG(MSG_012_0_00);
+                MSG(MSG_013_0_00);
+                MSG(MSG_014_0_00);
+                MSG_WND_CLS();
+            }
+            if RandYukaJun == 2
+            {
+                MSG_WND_DSP();
+                MSG(MSG_015_0_00);
+                MSG(MSG_016_0_00);
+                MSG(MSG_016_5_00);
+                int MSG = SEL(SEL_017_0_0);
+                MSG(MSG_018_0_00);
+                MSG(MSG_019_0_00);
+                MSG(MSG_020_0_00);
+                MSG(MSG_021_0_00);
+                MSG_WND_CLS();
+            }
+            if RandYukaJun == 3
+            {
+                MSG_WND_DSP();
+                MSG(MSG_022_0_00);
+                MSG(MSG_023_0_00);
+                MSG(MSG_024_0_00);
+                MSG(MSG_025_0_00);
+                MSG(MSG_026_0_00);
+                MSG(MSG_026_5_00);
+                MSG(MSG_027_0_00);
+                MSG_WND_CLS();
+            }
+        }
+        else if ( var7 == 10 ) // Mitsuru and Yukari
+        {
+            MSG_WND_DSP();
+            MSG(MSG_050_0_00);
+            MSG(MSG_051_0_00);
+
+            int MSG = SEL(SEL_052_0_0);
+
+            MSG(MSG_053_0_00);
+            MSG(MSG_054_0_00);
+            MSG(MSG_055_0_00);
+            MSG(MSG_056_0_00);
+            MSG(MSG_056_3_00);
+            MSG(MSG_056_5_00);
+            MSG_WND_CLS();
+        }
+        else if ( var7 == 72 ) // Akihiko and Mitsuru
+        {
+            MSG_WND_DSP();
+            MSG(MSG_057_0_00);
+            MSG(MSG_058_0_00);
+            MSG(MSG_059_0_00);
+            MSG(MSG_060_0_00);
+            MSG(MSG_061_0_00);
+            MSG(MSG_062_0_00);
+        
+            int sel = SEL(SEL_063_0_00);
+            if ( sel == 0 ) MSG(MSG_064_0_00);
+            else if ( sel == 1 ) MSG(MSG_065_0_00);
+        
+            MSG(MSG_066_0_0);
+            MSG(MSG_067_0_0);
+            MSG_WND_CLS();
+        }
+        else if ( var7 == 516 ) // Koromaru and Aigis
+        {
+            MSG_WND_DSP();
+            MSG(MSG_092_0_00);
+            MSG(MSG_093_0_00);
+            MSG(MSG_094_0_00);
+            
+            int MSG = SEL(SEL_095_0_00)
+
+            if MSG == 0
+            {
+                MSG(MSG_096_0_00);
+                MSG(MSG_097_0_00);
+            }
+            if MSG == 1
+            {
+                MSG(MSG_098_0_00);
+                MSG(MSG_099_0_00);
+            }
+            if MSG == 2
+            {
+                MSG(MSG_100_0_00);
+                MSG(MSG_101_0_00);
+            }
+
+            MSG(MSG_101_5_00);
+            MSG(MSG_101_7_00);
+            MSG_WND_CLS();
+        }
+
+        if (baseMsg != -1)
+        {
+            MSG_WND_DSP();
+            MSG(baseMsg + YukaOffset);
+            int sel = SEL(baseSel + YukaOffset);
+
+            if (sel == 0) MSG(msg0 + YukaOffset);
+            else if (sel == 1) MSG(msg1 + YukaOffset);
+            else if (sel == 2) MSG(msg2 + YukaOffset);
+
+            MSG(msgEnd + YukaOffset);
+            MSG_WND_CLS();
+        }
+
+
+}
+
+void dialogue_process()
+{
+	int var4 = 0;
+	int var5;
+	int var6;
+	int var7;
+	int var8;
+    var4 = get_avail_mask();
+
+    if (var4 == 0) {
+        if (BIT_CHK(321)) {
+            var6 = 12;
+        } else {
+            var6 = 11;
+        }
+    } else {
+        var5 = RND(var4 - 1);
+        // can generate between 1 and 3
+        var6 = FUNCTION_0042(var5);
+    }
+
+    var7 = RND(1);
+
+    if (var6 == 2) { // Yukari
+        var8 = (MSG_TARTAROS_BTL_YUKARI_ + var7);
+    } else if (var6 == 3) { // Aigis
+        var8 = (MSG_TARTAROS_BTL_AEGIS_0 + var7);
+    } else if (var6 == 4) { // Mitsuru
+        var8 = (MSG_TARTAROS_BTL_MITSURU + var7);
+    } else if (var6 == 5) { // Junpei
+        var8 = (MSG_TARTAROS_BTL_JUNPEI_ + var7);
+    } else if (var6 == 7) { // Akihiko
+        var8 = (MSG_TARTAROS_BTL_SANADA_ + var7);
+    } else if (var6 == 8) { // Ken
+        var8 = (MSG_TARTAROS_BTL_AMADA_0 + var7);
+    } else if (var6 == 9) { // Shinjiro
+        var8 = (MSG_TARTAROS_BTL_ARAGAKI + var7);
+    } else if (var6 == 10) { // Koromaru
+        var8 = (MSG_TARTAROS_BTL_KOROMAR + var7);
+    } else if (var6 == 11) { // Fuuka Navi
+        FUNCTION_0064(0, 0, 0, 6, 2, 0, 0);
+        var8 = (MSG_TARTAROS_BTL_FUKA_1);
+    } else if (var6 == 12) { // Mitsuru Navi
+        FUNCTION_0064(0, 0, 0, 4, 2, 0, 0);
+        var8 = (MSG_TARTAR_BTL_PT_MITSUR);
+    }
+
+    MSG_WND_DSP();
+    MSG(var8);
+    MSG_WND_CLS();
+
+    if ((var6 == 12) || (var6 == 11)) {
+        FUNCTION_0065(0);
+    }
+}

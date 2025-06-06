@@ -1,0 +1,43 @@
+
+
+import( "n10_01.msg" );
+
+// Procedure Index: 1
+void SCR_JUNPEI_hook()
+{
+    int var1;
+    MSG_WND_DSP();
+
+    if ( CHK_DAYS_STARTEND( 7, 28, 7, 29 ) )
+    {
+        MSG( MSG0728_JUNPEI_01 );
+        
+        if ( BIT_CHK( 4103 ) )
+        {
+            var1 = SEL( MSG0728_JUNPEI_01_SEL_G );
+        }
+        else 
+        {
+            var1 = SEL( MSG0728_JUNPEI_01_SEL );
+        }
+
+        
+        if ( var1 == 0 )
+        {
+            MSG( MSG0728_JUNPEI_02 );
+        }
+        else 
+        {
+            MSG( MSG0728_JUNPEI_03 );
+        }
+		
+    MSG_WND_CLS();
+	
+	// Don't bother with the other days in the original function
+        return;
+	}
+	
+	
+	// Call the original function
+	SCR_JUNPEI_unhooked();
+}

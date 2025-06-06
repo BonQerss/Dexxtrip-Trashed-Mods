@@ -1,0 +1,31 @@
+{
+  "ModId": "p4gpc.p5modelbackportplus",
+  "ModName": "P5 Model Backport\u002B",
+  "ModAuthor": "Dexxtrip, Light1",
+  "ModVersion": "1.0.0",
+  "ModDescription": "Backports HD models from later Megaten games such as P5, SMT VV, Soul Hackers 2, and Persona 3 Reload",
+  "ModDll": "",
+  "ModIcon": "",
+  "ModR2RManagedDll32": "",
+  "ModR2RManagedDll64": "",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "Tags": [],
+  "CanUnload": null,
+  "HasExports": null,
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "p4gpc.p5modelbackportplus.ReleaseMetadata.json",
+  "PluginData": {
+    "GameBanana": {
+      "ItemType": "Mod",
+      "ItemId": 548321
+    }
+  },
+  "IsUniversalMod": false,
+  "ModDependencies": [],
+  "OptionalDependencies": [],
+  "SupportedAppId": [
+    "p4g.exe"
+  ],
+  "ProjectUrl": ""
+}

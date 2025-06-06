@@ -1,0 +1,28 @@
+		if ( BIT_CHK(2006) ) || ( BIT_CHK(2007) ) // Akihiko
+		{
+			if ( CMM_CHK_LVUP(var80) == 1 )
+			{
+				if ( FUNCTION_0033() != 5 && !BIT_CHK(3065))
+				{
+					gVar76 = (gVar76 - 32768);
+					SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
+					SET_MSG_VAR(29, 8, 6);
+				}
+			}
+			else if ( CMM_GET_LV(var80) == 0 && CHK_DAYS_STARTEND(5, 9, 1, 23) )
+			{
+				if ( FUNCTION_0033() != 5 && !BIT_CHK(3065))
+				{
+					gVar76 = (gVar76 - 32768);
+					SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
+				}
+			}
+			else if ( CMM_CHK_LVUP(var80) == 0 && CMM_GET_LV(var80) != 0 && CMM_GET_LV(var80) != 10 )
+			{
+				if ( FUNCTION_0033() != 5 && !BIT_CHK(3065))
+				{
+					gVar76 = (gVar76 - 32768);
+					SET_MSG_VAR(17, CMM_GET_LV(var80), 0);
+				}
+			}
+		}

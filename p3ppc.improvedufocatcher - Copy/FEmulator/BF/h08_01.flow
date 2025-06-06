@@ -1,0 +1,394 @@
+import( "h08_01.msg" );
+
+void comu_ufo_catcher_hook()
+{
+    int var25;
+    int var24;
+    var25 = ADD_PC_MONEY( 0 );
+    SET_MSG_VAR( 1, var25, 0 );
+    MSG_WND_DSP();
+	
+	if ( ( GET_DAY( 1, 31 ) ) )
+    {
+        MSG_WND_DSP();
+        MSG(GO_BACK_HOME);
+        MSG_WND_CLS();
+        return;
+    }
+	
+	int Month = 3;
+	RESTART_0:
+	Month += 1;
+	
+	if ( Month == 13 )
+	{
+		Month = 1;
+	}
+	
+	if ( ( CHK_DAYS_STARTEND( Month, 1, Month, 31 ) && FUNCTION_0032() >= 1 ) && ( FUNCTION_0032() <= 4 ) )
+	{
+		switch ( Month )
+		{
+		case 4:
+			SET_MSG_VAR( 0, AprilWeekDay, 5 );
+			break;
+		case 5:
+			SET_MSG_VAR( 0, MayWeekDay, 5 );
+			break;
+		case 6:
+			SET_MSG_VAR( 0, JuneWeekDay, 5 );
+			break;
+		case 7:
+			SET_MSG_VAR( 0, JulyWeekDay, 5 );
+			break;
+		case 8:
+			SET_MSG_VAR( 0, AugustWeekDay, 5 );
+			break;
+		case 9:
+			SET_MSG_VAR( 0, SeptemberWeekDay, 5 );
+			break;
+		case 10:
+			SET_MSG_VAR( 0, OctoberWeekDay, 5 );
+			break;
+		case 11:
+			SET_MSG_VAR( 0, NovemberWeekDay, 5 );
+			break;
+		case 12:
+			SET_MSG_VAR( 0, DecemberWeekDay, 5 );
+			break;
+		case 1:
+			SET_MSG_VAR( 0, JanuaryWeekDay, 5 );
+			break;
+		}
+		MSG( UFO_CATHER_01 );
+	}
+	else if ( ( CHK_DAYS_STARTEND( Month, 1, Month, 31 ) && FUNCTION_0032() >= 4 ) || ( FUNCTION_0032() <= 1 ) )
+	{
+		switch ( Month )
+		{
+		case 4:
+			SET_MSG_VAR( 0, AprilWeekend, 5 );
+			break;
+		case 5:
+			SET_MSG_VAR( 0, MayWeekend, 5 );
+			break;
+		case 6:
+			SET_MSG_VAR( 0, JuneWeekend, 5 );
+			break;
+		case 7:
+			SET_MSG_VAR( 0, JulyWeekend, 5 );
+			break;
+		case 8:
+			SET_MSG_VAR( 0, AugustWeekend, 5 );
+			break;
+		case 9:
+			SET_MSG_VAR( 0, SeptemberWeekend, 5 );
+			break;
+		case 10:
+			SET_MSG_VAR( 0, OctoberWeekend, 5 );
+			break;
+		case 11:
+			SET_MSG_VAR( 0, NovemberWeekend, 5 );
+			break;
+		case 12:
+			SET_MSG_VAR( 0, DecemberWeekend, 5 );
+			break;
+		case 1:
+			SET_MSG_VAR( 0, JanuaryWeekend, 5 );
+			break;
+		}
+		MSG( UFO_CATHER );
+	}
+	else
+	{
+		goto RESTART_0;
+	}
+	int selection;
+    SEL_DEFKEY( 14, 2 );
+    selection = SEL( PLAYWAY );
+	
+	if ( selection == 0 )
+    {
+        AEGIS_END_0:
+        if ( var25 < 200 )
+        {
+            MSG( MONEY_TARINAI );
+            MSG_WND_CLS();
+            return;
+        }
+        else 
+        {
+            MSG_WND_CLS();
+            ADD_PC_MONEY( -200 );
+            FADE( 1, 10 );
+            FUNCTION_003C( 524 );
+            WAIT( 60 );
+            MSG_WND_DSP();
+            MSG( UFO_CATHER_CONTINUE );
+            MSG_WND_CLS();
+            FUNCTION_000D( 10 );
+            var24 = RND( 99 );
+            
+            if ( var24 < 20 )
+            {
+                MSG_WND_DSP();
+				
+
+                if ( ( CHK_DAYS_STARTEND( Month, 1, Month, 31 ) && FUNCTION_0032() >= 1 ) && ( FUNCTION_0032() <= 4 ) )
+				{
+					switch ( Month )
+					{
+					case 4:
+						SET_MSG_VAR( 1, AprilWeekDay, 5 );
+						SET_ITEM_NUM( ( AprilWeekDay ), ( GET_ITEM_NUM( ( AprilWeekDay ) ) + 1 ) );
+						break;
+					case 5:
+						SET_MSG_VAR( 1, MayWeekDay, 5 );
+						SET_ITEM_NUM( ( MayWeekDay ), ( GET_ITEM_NUM( ( MayWeekDay ) ) + 1 ) );
+						break;
+					case 6:
+						SET_MSG_VAR( 1, JuneWeekDay, 5 );
+						SET_ITEM_NUM( ( JuneWeekDay ), ( GET_ITEM_NUM( ( JuneWeekDay ) ) + 1 ) );
+						break;
+					case 7:
+						SET_MSG_VAR( 1, JulyWeekDay, 5 );
+						SET_ITEM_NUM( ( JulyWeekDay ), ( GET_ITEM_NUM( ( JulyWeekDay ) ) + 1 ) );
+						break;
+					case 8:
+						SET_MSG_VAR( 1, AugustWeekDay, 5 );
+						SET_ITEM_NUM( ( AugustWeekDay ), ( GET_ITEM_NUM( ( AugustWeekDay ) ) + 1 ) );
+						break;
+					case 9:
+						SET_MSG_VAR( 1, SeptemberWeekDay, 5 );
+						SET_ITEM_NUM( ( SeptemberWeekDay ), ( GET_ITEM_NUM( ( SeptemberWeekDay ) ) + 1 ) );
+						break;
+					case 10:
+						SET_MSG_VAR( 1, OctoberWeekDay, 5 );
+						SET_ITEM_NUM( ( OctoberWeekDay ), ( GET_ITEM_NUM( ( OctoberWeekDay ) ) + 1 ) );
+						break;
+					case 12:
+						SET_MSG_VAR( 1, NovemberWeekDay, 5 );
+						SET_ITEM_NUM( ( NovemberWeekDay ), ( GET_ITEM_NUM( ( NovemberWeekDay ) ) + 1 ) );
+						break;
+					case 12:
+						SET_MSG_VAR( 1, DecemberWeekDay, 5 );
+						SET_ITEM_NUM( ( DecemberWeekDay ), ( GET_ITEM_NUM( ( DecemberWeekDay ) ) + 1 ) );
+						break;
+					case 1:
+						SET_MSG_VAR( 1, JanuaryWeekDay, 5 );
+						SET_ITEM_NUM( ( JanuaryWeekDay ), ( GET_ITEM_NUM( ( JanuaryWeekDay ) ) + 1 ) );
+						break;
+					}
+					MSG( UFO_CATHER_GET_WHO );
+				}
+				else if ( ( CHK_DAYS_STARTEND( Month, 1, Month, 31 ) && FUNCTION_0032() >= 4 ) || ( FUNCTION_0032() <= 1 ) )
+				{
+					switch ( Month )
+					{
+					case 4:
+						SET_MSG_VAR( 1, AprilWeekend, 5 );
+						SET_ITEM_NUM( ( AprilWeekend ), ( GET_ITEM_NUM( ( AprilWeekend ) ) + 1 ) );
+						break;
+					case 5:
+						SET_MSG_VAR( 1, MayWeekend, 5 );
+						SET_ITEM_NUM( ( MayWeekend ), ( GET_ITEM_NUM( ( MayWeekend ) ) + 1 ) );
+						break;
+					case 6:
+						SET_MSG_VAR( 1, JuneWeekend, 5 );
+						SET_ITEM_NUM( ( JuneWeekend ), ( GET_ITEM_NUM( ( JuneWeekend ) ) + 1 ) );
+						break;
+					case 7:
+						SET_MSG_VAR( 1, JulyWeekend, 5 );
+						SET_ITEM_NUM( ( JulyWeekend ), ( GET_ITEM_NUM( ( JulyWeekend ) ) + 1 ) );
+						break;
+					case 8:
+						SET_MSG_VAR( 1, AugustWeekend, 5 );
+						SET_ITEM_NUM( ( AugustWeekend ), ( GET_ITEM_NUM( ( AugustWeekend ) ) + 1 ) );
+						break;
+					case 9:
+						SET_MSG_VAR( 1, SeptemberWeekend, 5 );
+						SET_ITEM_NUM( ( SeptemberWeekend ), ( GET_ITEM_NUM( ( SeptemberWeekend ) ) + 1 ) );
+						break;
+					case 10:
+						SET_MSG_VAR( 1, OctoberWeekend, 5 );
+						SET_ITEM_NUM( ( OctoberWeekend ), ( GET_ITEM_NUM( ( OctoberWeekend ) ) + 1 ) );
+						break;
+					case 11:
+						SET_MSG_VAR( 1, NovemberWeekend, 5 );
+						SET_ITEM_NUM( ( NovemberWeekend ), ( GET_ITEM_NUM( ( NovemberWeekend ) ) + 1 ) );
+						break;
+					case 12:
+						SET_MSG_VAR( 1, DecemberWeekend, 5 );
+						SET_ITEM_NUM( ( DecemberWeekend ), ( GET_ITEM_NUM( ( DecemberWeekend ) ) + 1 ) );
+						break;
+					case 1:
+						SET_MSG_VAR( 1, JanuaryWeekend, 5 );
+						SET_ITEM_NUM( ( JanuaryWeekend ), ( GET_ITEM_NUM( ( JanuaryWeekend ) ) + 1 ) );
+						break;
+					}
+					MSG( UFO_CATHER_GET_WHEN );
+				}
+            }
+            else 
+            {
+				MSG_WND_DSP();
+                MSG( UFO_CATHER_NG );
+				MSG_WND_CLS();
+				goto AEGIS_END_0;
+			}
+		}
+            FUNCTION_003B();
+            MSG_WND_CLS();
+			return;
+	}
+    else if ( selection == 1 )
+    {
+        AEGIS_END:
+        if ( var25 < 200 )
+        {
+            MSG( MONEY_TARINAI );
+            MSG_WND_CLS();
+            return;
+        }
+        else 
+        {
+            MSG_WND_CLS();
+            ADD_PC_MONEY( -200 );
+            FADE( 1, 10 );
+            FUNCTION_003C( 524 );
+            WAIT( 60 );
+            MSG_WND_DSP();
+            MSG( UFO_CATHER_CONTINUE );
+            MSG_WND_CLS();
+            FUNCTION_000D( 10 );
+            var24 = RND( 99 );
+            
+            if ( var24 < 20 )
+            {
+                MSG_WND_DSP();
+				
+                if ( ( CHK_DAYS_STARTEND( Month, 1, Month, 31 ) && FUNCTION_0032() >= 1 ) && ( FUNCTION_0032() <= 4 ) )
+				{
+					switch ( Month )
+					{
+					case 4:
+						SET_MSG_VAR( 1, AprilWeekDay, 5 );
+						SET_ITEM_NUM( ( AprilWeekDay ), ( GET_ITEM_NUM( ( AprilWeekDay ) ) + 1 ) );
+						break;
+					case 5:
+						SET_MSG_VAR( 1, MayWeekDay, 5 );
+						SET_ITEM_NUM( ( MayWeekDay ), ( GET_ITEM_NUM( ( MayWeekDay ) ) + 1 ) );
+						break;
+					case 6:
+						SET_MSG_VAR( 1, JuneWeekDay, 5 );
+						SET_ITEM_NUM( ( JuneWeekDay ), ( GET_ITEM_NUM( ( JuneWeekDay ) ) + 1 ) );
+						break;
+					case 7:
+						SET_MSG_VAR( 1, JulyWeekDay, 5 );
+						SET_ITEM_NUM( ( JulyWeekDay ), ( GET_ITEM_NUM( ( JulyWeekDay ) ) + 1 ) );
+						break;
+					case 8:
+						SET_MSG_VAR( 1, AugustWeekDay, 5 );
+						SET_ITEM_NUM( ( AugustWeekDay ), ( GET_ITEM_NUM( ( AugustWeekDay ) ) + 1 ) );
+						break;
+					case 9:
+						SET_MSG_VAR( 1, SeptemberWeekDay, 5 );
+						SET_ITEM_NUM( ( SeptemberWeekDay ), ( GET_ITEM_NUM( ( SeptemberWeekDay ) ) + 1 ) );
+						break;
+					case 10:
+						SET_MSG_VAR( 1, OctoberWeekDay, 5 );
+						SET_ITEM_NUM( ( OctoberWeekDay ), ( GET_ITEM_NUM( ( OctoberWeekDay ) ) + 1 ) );
+						break;
+					case 12:
+						SET_MSG_VAR( 1, NovemberWeekDay, 5 );
+						SET_ITEM_NUM( ( NovemberWeekDay ), ( GET_ITEM_NUM( ( NovemberWeekDay ) ) + 1 ) );
+						break;
+					case 12:
+						SET_MSG_VAR( 1, DecemberWeekDay, 5 );
+						SET_ITEM_NUM( ( DecemberWeekDay ), ( GET_ITEM_NUM( ( DecemberWeekDay ) ) + 1 ) );
+						break;
+					case 1:
+						SET_MSG_VAR( 1, JanuaryWeekDay, 5 );
+						SET_ITEM_NUM( ( JanuaryWeekDay ), ( GET_ITEM_NUM( ( JanuaryWeekDay ) ) + 1 ) );
+						break;
+					}
+					MSG( UFO_CATHER_GET_WHO );
+				}
+				else if ( ( CHK_DAYS_STARTEND( Month, 1, Month, 31 ) && FUNCTION_0032() >= 4 ) || ( FUNCTION_0032() <= 1 ) )
+				{
+					switch ( Month )
+					{
+					case 4:
+						SET_MSG_VAR( 1, AprilWeekend, 5 );
+						SET_ITEM_NUM( ( AprilWeekend ), ( GET_ITEM_NUM( ( AprilWeekend ) ) + 1 ) );
+						break;
+					case 5:
+						SET_MSG_VAR( 1, MayWeekend, 5 );
+						SET_ITEM_NUM( ( MayWeekend ), ( GET_ITEM_NUM( ( MayWeekend ) ) + 1 ) );
+						break;
+					case 6:
+						SET_MSG_VAR( 1, JuneWeekend, 5 );
+						SET_ITEM_NUM( ( JuneWeekend ), ( GET_ITEM_NUM( ( JuneWeekend ) ) + 1 ) );
+						break;
+					case 7:
+						SET_MSG_VAR( 1, JulyWeekend, 5 );
+						SET_ITEM_NUM( ( JulyWeekend ), ( GET_ITEM_NUM( ( JulyWeekend ) ) + 1 ) );
+						break;
+					case 8:
+						SET_MSG_VAR( 1, AugustWeekend, 5 );
+						SET_ITEM_NUM( ( AugustWeekend ), ( GET_ITEM_NUM( ( AugustWeekend ) ) + 1 ) );
+						break;
+					case 9:
+						SET_MSG_VAR( 1, SeptemberWeekend, 5 );
+						SET_ITEM_NUM( ( SeptemberWeekend ), ( GET_ITEM_NUM( ( SeptemberWeekend ) ) + 1 ) );
+						break;
+					case 10:
+						SET_MSG_VAR( 1, OctoberWeekend, 5 );
+						SET_ITEM_NUM( ( OctoberWeekend ), ( GET_ITEM_NUM( ( OctoberWeekend ) ) + 1 ) );
+						break;
+					case 11:
+						SET_MSG_VAR( 1, NovemberWeekend, 5 );
+						SET_ITEM_NUM( ( NovemberWeekend ), ( GET_ITEM_NUM( ( NovemberWeekend ) ) + 1 ) );
+						break;
+					case 12:
+						SET_MSG_VAR( 1, DecemberWeekend, 5 );
+						SET_ITEM_NUM( ( DecemberWeekend ), ( GET_ITEM_NUM( ( DecemberWeekend ) ) + 1 ) );
+						break;
+					case 1:
+						SET_MSG_VAR( 1, JanuaryWeekend, 5 );
+						SET_ITEM_NUM( ( JanuaryWeekend ), ( GET_ITEM_NUM( ( JanuaryWeekend ) ) + 1 ) );
+						break;
+					}
+					MSG( UFO_CATHER_GET_WHEN );
+				}
+
+            }
+            else 
+            {
+                MSG_WND_DSP();
+                MSG( UFO_CATHER_NG );
+				MSG( TRY_AGAIN );
+				SEL_DEFKEY( 14, 1 );
+					if ( SEL( YESNO_SEL_2 ) == 0 )
+					{
+						goto AEGIS_END;
+					}
+					else
+					{
+						return;
+					}
+				
+            }
+
+            FUNCTION_003B();
+            MSG_WND_CLS();
+        }
+
+    }
+	else if ( selection == 2 )
+	{
+		return;
+	}
+	
+}
+

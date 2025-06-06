@@ -1,0 +1,128 @@
+import( "n07_02.msg" );
+
+// Procedure Index: 3
+void SCR_JUNPEI_hook()
+{
+	int var3;
+	MSG_WND_DSP();
+	
+    if ( GET_DAY( 5, 12 ) )
+    {
+        MSG( MSG0512_JUNPEI_011 );
+        var3 = SEL( MSG0512_JUNPEI_01_SELL );
+        
+        if ( var3 == 0 )
+        {
+            MSG( MSG0512_JUNPEI_022 );
+            MSG_WND_CLS();
+            FADE( 3, 20 );
+            CALL_EVENT( 912, 1 );
+            NEXT_TIME();
+        }
+        else 
+        {
+            MSG( MSG0512_JUNPEI_033 );
+        }
+		
+		MSG_WND_CLS();
+
+        // Don't bother with the other days in the original function
+        return;
+    }
+
+    // Call the original function
+    SCR_JUNPEI_unhooked();
+
+}
+
+// Procedure Index: 3
+void SCR_SANADA_hook()
+{
+	int var2;
+	MSG_WND_DSP();
+	
+    if ( GET_DAY( 5, 29 ) )
+    {
+        MSG( MSG0512_JUNPEI_011 );
+        var2 = SEL( MSG0512_JUNPEI_01_SELL );
+        
+        if ( var2 == 0 )
+        {
+            MSG( MSG0512_JUNPEI_022 );
+            MSG_WND_CLS();
+            FADE( 3, 20 );
+            CALL_EVENT( 912, 1 );
+            NEXT_TIME();
+        }
+        else 
+        {
+            MSG( MSG0512_JUNPEI_033 );
+        }
+		
+		MSG_WND_CLS();
+
+        // Don't bother with the other days in the original function
+        return;
+    }
+	
+	if ( GET_DAY( 7, 24 ) )
+    {
+        MSG( MSG0512_JUNPEI_011 );
+        var2 = SEL( MSG0512_JUNPEI_01_SELL );
+        
+        if ( var2 == 0 )
+        {
+            MSG( MSG0512_JUNPEI_022 );
+            MSG_WND_CLS();
+            FADE( 3, 20 );
+            CALL_EVENT( 912, 1 );
+            NEXT_TIME();
+        }
+        else 
+        {
+            MSG( MSG0512_JUNPEI_033 );
+        }
+		
+		MSG_WND_CLS();
+
+        // Don't bother with the other days in the original function
+        return;
+    }
+
+    // Call the original function
+    SCR_SANADA_unhooked();
+
+}
+
+// Procedure Index: 8
+void KOROMARU_SANPO_hook()
+{
+	int var2;
+    MSG_WND_DSP();
+    
+    if ( GET_DAY( 8, 22 ) )
+    {
+        MSG( MSG0512_JUNPEI_011 );
+        var2 = SEL( MSG0512_JUNPEI_01_SELL );
+        
+        if ( var2 == 0 )
+        {
+            MSG( MSG0512_JUNPEI_022 );
+            MSG_WND_CLS();
+            FADE( 3, 20 );
+            CALL_EVENT( 912, 1 );
+            NEXT_TIME();
+        }
+        else 
+        {
+            MSG( MSG0512_JUNPEI_033 );
+        }
+		
+		MSG_WND_CLS();
+
+        // Don't bother with the other days in the original function
+        return;
+    }
+	
+	KOROMARU_SANPO_unhooked();
+}

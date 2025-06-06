@@ -1,0 +1,1 @@
+Follow this pathing format for other mods to enable them to be added to the rotation.

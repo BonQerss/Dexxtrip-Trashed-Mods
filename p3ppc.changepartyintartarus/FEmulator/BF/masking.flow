@@ -1,0 +1,69 @@
+// get bit-mask values that correspond to the line in PARTY_MEMBERS sel
+int get_ally_mask(int id) {
+	switch (id) {
+		case PartyMember.Yukari:
+			return 1;
+		case PartyMember.Aigis:
+			return 2;
+		case PartyMember.Mitsuru:
+			return 4;
+		case PartyMember.Junpei:
+			return 8;
+		case PartyMember.Akihiko:
+			return 16;
+		case PartyMember.Ken:
+			return 32;
+		case PartyMember.Shinjiro:
+			return 64;
+		case PartyMember.Koromaru:
+			return 128;
+		default:
+			break;
+	}
+	return 0; // return nothing if char id is invalid
+}
+
+// checks for if a character is in party
+// TODO: is there a library function/field.bf procedure that does this already that i don't know about?
+bool ally_in_party(int id) {
+	for (int i = 0; i < 3; i++) {
+		if (FUNCTION_0042(i) == id) {
+			return true;
+		}
+	}
+	return false;
+}
+
+// gets mask that will only show current party
+int get_party_mask() {
+	// init mask to 1111_1111, which only shows Cancel
+	int maskVal = 0xFF;
+	for (int i = 0; i < 3; i++) {
+		// subtract options based on chars you have
+		maskVal = (maskVal - get_ally_mask(FUNCTION_0042(i)));
+	}
+	return maskVal;
+}
+
+// gets mask that only shows available party members
+// (unlocked & not in the current party)
+int get_avail_mask() {
+	int maskVal = 0xFF;
+	int cAllyID;
+	// loop through 2-9 for char bitflag ids
+	for (int i = 2; i < 10; i++) {
+		// adjust for actual character ids
+		if (i >= 6) {
+			cAllyID = (i + 1);
+		}
+		else {
+			cAllyID = i;
+		}
+		// if party member has been unlocked & we don't
+		// have them in the party, the mask will show them
+		if (BIT_CHK(320 + i) && !ally_in_party(cAllyID)) {
+			maskVal = (maskVal - get_ally_mask(cAllyID));
+		}
+	}
+	return maskVal;
+}

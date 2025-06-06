@@ -1,0 +1,23 @@
+
+import("Common/Shrine.flow");
+
+
+global bool isFieldBf;
+
+void f012_001_shortcut_hook()
+{
+    isFieldBf = false;
+    shrine_shortcut();
+}
+
+void CallOriginalSquareMenu()
+{
+    f012_001_shortcut();
+} 
+
+void f012_001_init_hook()
+{
+    SaveEveryday();
+
+    f012_001_init_unhooked();
+}
